@@ -71,7 +71,7 @@ while($red= $result->fetch_array()){
                 
                 ?>
                     <tr>
-                        <td><?php echo $red['id'] ?></td>
+                        <td></td>
                         <td><?php echo $red['ime'] ?></td>
                         <td><?php echo $red['prezime'] ?></td>
                         <td>
@@ -82,7 +82,7 @@ while($red= $result->fetch_array()){
                         <td class="celija">
                             <label class="radio-btn">
                                 <!-- dodati id muzicara -->
-                                <input type="radio" class="radio" name="checked-donut" value="1">
+                                <input type="radio" class="radio" name="checked-donut" value=<?php echo $red['id'] ?>>
                                 <span class="checkmark"></span>
                             </label>
                         </td>

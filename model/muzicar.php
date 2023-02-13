@@ -29,7 +29,12 @@ public static function getAll( mysqli $conn){
     
     }
     
+public static function deleteById($id,mysqli $conn){
 
+$q= "DELETE FROM muzicari WHERE id =$id";
+return $conn->query($q);
+
+}
 }
 
 ?>
