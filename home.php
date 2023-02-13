@@ -1,9 +1,14 @@
 <?php
 
-# require "dbBroker.php";
-# require "model/muzicar.php";
-# require "model/instrument.php";
+ require "dbBroker.php";
+ require "model/muzicar.php";
+ require "model/instrument.php";
+$result= Muzicar:: getAll($conn);
 
+if(!$result){
+    echo "Greska kod upita";
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -49,12 +54,31 @@
                 </tr>
             </thead>
             <tbody>
+                <?php
+                if($result->num_rows==0){
+                  ?>
+<h3> trenutno nema muzicara</h3>
+<?php
+                } else{
+
+while($red= $result->fetch_array()){
+
+
                 
+                
+                
+                
+                
+                ?>
                     <tr>
-                        <td>Id</td>
-                        <td>Ime</td>
-                        <td>Prezime</td>
-                        <td>Instrument</td>
+                        <td><?php echo $red['id'] ?></td>
+                        <td><?php echo $red['ime'] ?></td>
+                        <td><?php echo $red['prezime'] ?></td>
+                        <td>
+                            <?php
+                            $instrument=Instrument::getById( $red['instrument_id'] , $conn);
+                             echo $instrument;
+                             ?></td>
                         <td class="celija">
                             <label class="radio-btn">
                                 <!-- dodati id muzicara -->
@@ -64,7 +88,12 @@
                         </td>
 
                     </tr>
-                
+                    <?php
+                }
+
+
+} ?>
+
             </tbody>
         </table>
     </div>

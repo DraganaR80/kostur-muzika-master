@@ -17,6 +17,20 @@ class Instrument{
 $q="INSERT INTO instrument(naziv) VALUES ( '$instrument')";
  return $conn->query($q);
     }
+
+public static function getBYName($instrument, mysqli $conn){
+
+$q=  "SELECT FROM instrument WHERE naziv='$instrument' LIMIT 1";
+return $conn->query($q) ->fetch_column();
+
+}
+
+public static function getById($instrument_id, mysqli $conn){
+
+    $q=  "SELECT FROM instrument WHERE naziv='$instrument_id' LIMIT 1";
+    return $conn->query($q) ->fetch_column();
+    
+    }
 }
 
 ?>

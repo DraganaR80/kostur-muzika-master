@@ -14,6 +14,22 @@ class Muzicar{
         $this->instrumentID = $instrumentID;
     }
 
+
+public static function add($ime, $prezime,$instrument_id, mysqli $conn){
+$q= "INSERT INTO muzicari (ime, prezime,instrument_id)
+VALUES('$ime','$prezime',$instrument_id)";
+
+return $conn->query($q);
+
+}
+public static function getAll( mysqli $conn){
+    $q="SELECT * FROM muzicari";
+    
+    return $conn->query($q);
+    
+    }
+    
+
 }
 
 ?>
