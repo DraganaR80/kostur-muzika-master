@@ -12,6 +12,11 @@ class Instrument{
         $this->nazivInstrumenta = $nazivInstrumenta;
     }
 
-    
+    public static function add($instrument,mysqli $conn){
+
+$q="INSERT INTO instrument(naziv) VALUES ( '$instrument')";
+ return $conn->query($q);
+    }
 }
+
 ?>
